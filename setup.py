@@ -27,5 +27,6 @@ setup(name='silva.app.photogallery',
         'setuptools',
         'silva.core.conf',
         'silva.core.interfaces',
+        'js.galleriffic',
       ],
       )
