@@ -1,6 +1,7 @@
 
 
 from silva.core import conf as silvaconf
+from silva.core.interfaces import IFolder
 from silva.core.layout.interfaces import ICustomizableTag
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
@@ -16,3 +17,4 @@ class IPhotoGalleryResources(IDefaultBrowserLayer):
 class IPhotoGallery(ICustomizableTag):
     """Container as a photo gallery
     """
+    silvaconf.only_for(IFolder)
