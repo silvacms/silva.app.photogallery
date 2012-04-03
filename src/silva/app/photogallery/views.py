@@ -16,16 +16,15 @@ class PhotoGalleryView(silvaviews.View):
     def update(self):
         need(IPhotoGalleryResources)
         self.photos = []
-        if IFolder.providedBy(self.context):
+        self.intro = self.context.get_default()
+        get_metadata = getUtility(IMetadataService).getMetadataValue
 
-            get_metadata = getUtility(IMetadataService).getMetadataValue
+        def get_info(image):
+            return {
+                'title': image.get_title_or_id(),
+                'url': image.url(),
+                'thumbnail': image.url(thumbnail=True),
+                'description': get_metadata(image, 'silva-extra', 'content_description')}
 
-            def get_info(image):
-                return {
-                    'title': image.get_title_or_id(),
-                    'url': image.url(),
-                    'thumbnail': image.url(thumbnail=True),
-                    'description': get_metadata(image, 'silva-extra', 'content_description')}
-
-            self.photos = map(get_info,
+        self.photos = map(get_info,
                               self.context.objectValues('Silva Image'))
