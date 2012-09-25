@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+# Copyright (c) 2012  Infrae. All rights reserved.
+# See also LICENSE.txt
 from setuptools import setup, find_packages
 import os
 
-version = '1.0dev'
+version = '1.0'
 
 setup(name='silva.app.photogallery',
       version=version,
@@ -15,7 +18,7 @@ setup(name='silva.app.photogallery',
       keywords='silva photo gallery',
       author='Sylvain Viollon',
       author_email='info@infrae.com',
-      url='',
+      url='http://infrae.com/download/silva',
       license='BSD',
       package_dir={'': 'src'},
       packages=find_packages('src'),
@@ -24,9 +27,15 @@ setup(name='silva.app.photogallery',
       zip_safe=True,
       install_requires=[
         'five.grok',
+        'js.galleriffic',
         'setuptools',
         'silva.core.conf',
         'silva.core.interfaces',
-        'js.galleriffic',
-      ],
+        'silva.core.layout',
+        'silva.core.services',
+        'silva.core.views',
+        'silva.fanstatic',
+        'zope.component',
+        'zope.publisher',
+        ],
       )
